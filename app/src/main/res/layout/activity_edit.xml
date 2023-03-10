@@ -55,7 +55,8 @@
         app:backgroundTint="#954B5563"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_save" />
+        app:srcCompat="@drawable/ic_save"
+        android:focusable="true" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btnDelete"
@@ -71,5 +72,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnSave"
         app:srcCompat="@drawable/ic_delete"
-        tools:visibility="visible" />
+        tools:visibility="visible"
+        android:focusable="true" />
 </androidx.constraintlayout.widget.ConstraintLayout>
