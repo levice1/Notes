@@ -1,11 +1,11 @@
 package com.example.notes.usecase
 
 import android.content.Context
-import com.example.dbsqlite.db.dbManager
+import com.example.notes.db.DbManager
 import com.example.notes.model.noteModel
 
 class GetAllFromDbUseCase (context: Context) {
-    val dbManager = dbManager(context)
+    private val dbManager = DbManager(context)
     fun get() : ArrayList<noteModel>? {
         dbManager.open()
         val data = dbManager.readAllFromDb()

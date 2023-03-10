@@ -28,14 +28,14 @@ class recViewAdapter(val context: Context) : RecyclerView.Adapter<recViewAdapter
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.binding.txtTitle.text = notesList[position].title
-        holder.binding.txtDescription.text = notesList[position].descriprion
+        holder.binding.txtDescription.text = notesList[position].description
         holder.itemView.setOnClickListener{ // слушатель нажатий для каждого ItemView
             // создание интента для перехода на новое активити. Для этого нужно передавать контекст в адаптер
             val i = Intent(context, EditActivity::class.java)
             // добавление в интент данных. Добавляю строками чтобы легче было передавать и принимать
             i.putExtra(IntentNames.ID, notesList[position].id)
             i.putExtra(IntentNames.TITLE, notesList[position].title)
-            i.putExtra(IntentNames.DESCRIPTION, notesList[position].descriprion)
+            i.putExtra(IntentNames.DESCRIPTION, notesList[position].description)
             // старт активити редактирования/создания и передача в него данных нажатого обьекта
             context.startActivity(i)
         }

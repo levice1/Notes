@@ -1,17 +1,14 @@
-package com.example.dbsqlite.db
+package com.example.notes.db
 
 import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
-import android.util.Log
-import com.example.notes.db.dbHelper
-import com.example.notes.db.dbNames
 import com.example.notes.model.noteModel
 
-class dbManager(val context: Context) {
-    val dbHelper = dbHelper(context)
-    var db: SQLiteDatabase? = null
+class DbManager(context: Context) {
+    private val dbHelper = DbHelper(context)
+    private var db: SQLiteDatabase? = null
 
     //    Function for open DB
     fun open() {
@@ -26,10 +23,10 @@ class dbManager(val context: Context) {
     //    Function for write to DB
     fun writeToDb(title:String, content:String){
         val values = ContentValues().apply {
-            put(dbNames.COLUMN_NAME_TITLE,title)
-            put(dbNames.COLUMN_NAME_CONTENT,content)
+            put(DbNames.COLUMN_NAME_TITLE,title)
+            put(DbNames.COLUMN_NAME_CONTENT,content)
         }
-        db?.insert(dbNames.TABLE_NAME, null, values)
+        db?.insert(DbNames.TABLE_NAME, null, values)
     }
 
     //    Function for read from DB
@@ -37,13 +34,13 @@ class dbManager(val context: Context) {
     fun readAllFromDb(): ArrayList<noteModel>? {
         val notesList = ArrayList<noteModel>()
 
-        val cursor = db?.query(dbNames.TABLE_NAME, null,null,null,null,
+        val cursor = db?.query(DbNames.TABLE_NAME, null,null,null,null,
             null,null)
         if (cursor != null){
-        while (cursor?.moveToNext()!!){
-            val dataId = cursor.getInt(cursor.getColumnIndex(dbNames.COLUMN_NAME_ID))
-            val dataTitle = cursor.getString(cursor.getColumnIndex(dbNames.COLUMN_NAME_TITLE))
-            val dataContent = cursor.getString(cursor.getColumnIndex(dbNames.COLUMN_NAME_CONTENT))
+        while (cursor.moveToNext()){
+            val dataId = cursor.getInt(cursor.getColumnIndex(DbNames.COLUMN_NAME_ID))
+            val dataTitle = cursor.getString(cursor.getColumnIndex(DbNames.COLUMN_NAME_TITLE))
+            val dataContent = cursor.getString(cursor.getColumnIndex(DbNames.COLUMN_NAME_CONTENT))
             notesList.add(noteModel(dataId, dataTitle,dataContent))
         }
         cursor.close()
@@ -53,7 +50,7 @@ class dbManager(val context: Context) {
     }
     //    Function for delete element from DB
     fun deleteIfExists(id: Int) {
-        db?.delete(dbNames.TABLE_NAME, "${dbNames.COLUMN_NAME_ID} = ?", arrayOf(id.toString()))
+        db?.delete(DbNames.TABLE_NAME, "${DbNames.COLUMN_NAME_ID} = ?", arrayOf(id.toString()))
     }
 }
 

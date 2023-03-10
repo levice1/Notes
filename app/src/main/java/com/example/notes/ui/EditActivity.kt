@@ -2,8 +2,6 @@ package com.example.notes.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import com.example.dbsqlite.db.dbManager
 import com.example.notes.databinding.ActivityEditBinding
 import com.example.notes.model.IntentNames
 import com.example.notes.model.noteModel
@@ -11,8 +9,7 @@ import com.example.notes.usecase.DeleteFromDbUseCase
 import com.example.notes.usecase.SaveOrUpdateInDbUseCase
 
 class EditActivity : AppCompatActivity() {
-    lateinit var binding: ActivityEditBinding
-    val dbManager = dbManager(this)
+    private lateinit var binding: ActivityEditBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityEditBinding.inflate(layoutInflater)

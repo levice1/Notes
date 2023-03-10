@@ -3,10 +3,8 @@ package com.example.notes.ui
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import com.example.dbsqlite.db.dbManager
+import com.example.notes.db.DbManager
 import com.example.notes.adapter.recViewAdapter
 import com.example.notes.databinding.ActivityMainBinding
 import com.example.notes.usecase.GetAllFromDbUseCase
@@ -15,7 +13,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var adapter: recViewAdapter  // присвоение адаптера к переменной
     private lateinit var recyclerView: RecyclerView
     private lateinit var binding: ActivityMainBinding
-    private val dbManager = dbManager(this)
+    private val dbManager = DbManager(this)
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,7 +45,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    fun initRecView(){
+    private fun initRecView(){
         recyclerView = binding.recVew // присвоение самого рецайклер вью
         adapter = recViewAdapter(this) // присвоение адаптера к переменной
         recyclerView.adapter = adapter // добавление адаптера к рециклер вью

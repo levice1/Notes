@@ -1,10 +1,10 @@
 package com.example.notes.usecase
 
 import android.content.Context
-import com.example.dbsqlite.db.dbManager
+import com.example.notes.db.DbManager
 
 class DeleteFromDbUseCase (val id : Int, context: Context) {
-    val dbManager = dbManager(context)
+    private val dbManager = DbManager(context)
     fun delete(){
         dbManager.open()
         dbManager.deleteIfExists(id)
