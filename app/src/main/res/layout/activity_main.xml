@@ -7,6 +7,21 @@
     android:background="#000000"
     tools:context=".ui.MainActivity">
 
+    <SearchView
+        android:id="@+id/searchView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:baselineAligned="false"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        android:queryBackground="@drawable/background"
+        android:queryHint="@string/search"
+        android:searchIcon="@drawable/ic_search"
+        android:textAlignment="textStart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/txtEmpty"
         android:layout_width="0dp"
@@ -26,14 +41,16 @@
         android:id="@+id/rec_vew"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:foregroundGravity="top"
         android:paddingStart="15dp"
         android:paddingEnd="15dp"
         android:visibility="visible"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchView"
         tools:itemCount="2"
         tools:listitem="@layout/rec_view_layout" />
 
