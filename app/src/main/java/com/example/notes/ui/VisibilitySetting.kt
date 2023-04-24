@@ -8,7 +8,6 @@ class VisibilitySetting {
 
     fun setVisibilityIsEmptyDB(binding: ActivityMainBinding) {
         binding.recVew.visibility = View.GONE
-        binding.searchView.visibility = View.GONE
         binding.txtEmpty.visibility = View.VISIBLE
     }
 
